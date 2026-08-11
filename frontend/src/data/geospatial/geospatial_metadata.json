@@ -1,0 +1,14 @@
+{
+  "source": "OpenStreetMap",
+  "retrieval_method": "Overpass API",
+  "retrieved_at": "2026-08-11T17:23:09.047346+00:00",
+  "bounding_box": {
+    "south": 18.54,
+    "west": 73.84,
+    "north": 18.68,
+    "east": 73.92
+  },
+  "feature_count": 10438,
+  "license_note": "OpenStreetMap data is licensed under ODbL by the OpenStreetMap Foundation (OSMF).",
+  "processing": "OSM highway features converted to local GeoJSON"
+}

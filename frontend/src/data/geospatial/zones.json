@@ -1,0 +1,68 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "zone_id": "Z1",
+        "name": "Alandi Temple Core Zone",
+        "risk_level": "critical",
+        "current_density": 95,
+        "eta_critical": "0 min",
+        "center": [18.6659, 73.8969]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [73.8920, 18.6700],
+          [73.9020, 18.6700],
+          [73.9020, 18.6600],
+          [73.8920, 18.6600],
+          [73.8920, 18.6700]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "zone_id": "Z2",
+        "name": "Dehu Phata Intersection",
+        "risk_level": "medium",
+        "current_density": 65,
+        "eta_critical": "45 min",
+        "center": [18.6300, 73.8800]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [73.8750, 18.6350],
+          [73.8850, 18.6350],
+          [73.8850, 18.6250],
+          [73.8750, 18.6250],
+          [73.8750, 18.6350]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "zone_id": "Z3",
+        "name": "Dighi Checkpost",
+        "risk_level": "high",
+        "current_density": 82,
+        "eta_critical": "15 min",
+        "center": [18.5900, 73.8700]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [73.8650, 18.5950],
+          [73.8750, 18.5950],
+          [73.8750, 18.5850],
+          [73.8650, 18.5850],
+          [73.8650, 18.5950]
+        ]]
+      }
+    }
+  ]
+}
