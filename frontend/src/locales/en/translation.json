@@ -1,0 +1,10 @@
+{
+  "dashboard": "Dashboard",
+  "highRisk": "High Risk Zone",
+  "recommendation": "AI Recommendation",
+  "simulate": "Simulate",
+  "approve": "Approve",
+  "modify": "Modify",
+  "reject": "Reject",
+  "language": "Language"
+}
