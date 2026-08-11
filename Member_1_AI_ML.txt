@@ -1,0 +1,58 @@
+VARI OS – Member 1 Work Document
+AI/ML & Predictive Risk Engine
+
+1. Role Overview
+Member 1 owns the predictive intelligence layer of VARI OS. The responsibility is to convert current zone conditions into measurable near-future risk predictions, primarily for crowd congestion and heat/environmental risk.
+2. Core Question
+“What is likely to go wrong in the next 30–60 minutes, and how confident is the system?”
+3. Inputs
+Crowd count / density by zone
+Temperature
+Humidity
+Water availability
+Time of day
+Zone identifier and derived features
+Historical/synthetic risk labels
+4. Synthetic Data Generator
+Because real operational Wari datasets are not available for the hackathon, create a clearly labelled synthetic historical dataset containing several thousand records. The generator should create realistic relationships—for example, higher crowd + higher temperature + lower water availability should increase risk probability.
+Use Python + NumPy/Pandas
+Fix a random seed for reproducibility
+Create train/validation/test splits
+Document that synthetic coefficients are illustrative
+Never hardcode final accuracy or confidence values
+5. Model Development
+Start with Logistic Regression as a baseline and compare it with XGBoost or another suitable scikit-learn-compatible classifier. The final model should be selected based on validation performance and interpretability, not simply because it is more complex.
+Train model on training data only
+Evaluate on held-out test data
+Save the trained model with joblib
+Expose predict_proba() for risk probability
+Record model version and feature list
+6. Outputs
+Zone ID
+Risk probability
+Risk level: Low / Medium / High / Critical
+Prediction horizon: 30 or 60 minutes
+Model probability/confidence source
+Optional feature contribution/explanation
+7. Evaluation
+The project must report genuine test-set metrics. Recommended metrics are Precision, Recall, F1-score and ROC-AUC; accuracy may also be shown when appropriate. Do not put a metric into the PPT until it has been produced by the actual trained model.
+8. API Contract
+Member 1 should provide prediction results to the backend in a language-independent JSON structure.
+{   "zone_id": "Z6",   "risk_probability": 0.78,   "risk_level": "high",   "horizon_minutes": 30 }
+9. Integration With Other Members
+Member 2 consumes risk scores to allocate resources.
+Member 3 displays risk values on the Digital Twin and uses them in simulation.
+Member 4 displays the prediction and translates its labels into English/Marathi UI text.
+10. What This Member Must NOT Claim
+Do not claim real Wari prediction accuracy from synthetic data.
+Do not claim real CCTV crowd detection.
+Do not hardcode a 78% risk value.
+Do not describe the model as a full flood/hydrodynamic simulator.
+11. Final Deliverables
+Synthetic dataset generator
+Training script
+Saved trained model
+Evaluation report
+Prediction module/API integration
+Feature documentation
+Actual test metrics for the final presentation
