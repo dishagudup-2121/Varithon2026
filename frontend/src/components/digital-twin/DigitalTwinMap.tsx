@@ -52,6 +52,7 @@ export default function DigitalTwinMap() {
         <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">{t('legend')}</h4>
         <ul className="space-y-1.5 text-xs text-slate-300">
           <li className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-sky-400"></div> Pilgrim Groups</li>
+          <li className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-slate-500"></div> Road Network</li>
           <li className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500"></div> Open Route</li>
           <li className="flex items-center gap-2"><div className="w-2 h-2 rounded-full border-t-2 border-amber-500 border-dashed"></div> Restricted Route</li>
           <li className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-red-500"></div> Closed Route</li>
