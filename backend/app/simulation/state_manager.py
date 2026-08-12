@@ -9,6 +9,8 @@ from ..graph.graph_builder import build_graph
 from .generator import generate_pilgrim_groups
 from .route_planner import plan_route
 from .movement_engine import tick_movement
+from .position_resolver import resolve_position
+from ..schemas.simulation import PilgrimGroupResponse
 
 class SimulationStateManager:
     """
@@ -52,11 +54,29 @@ class SimulationStateManager:
                 g.route = res.edge_ids
                 self.groups[g.group_id] = g
                 
-    def get_state_snapshot(self) -> List[PilgrimGroup]:
+    def get_state_snapshot(self) -> List[PilgrimGroupResponse]:
         """
         Returns a deep copy snapshot of the groups to isolate state mutation from API responses.
+        Converts internal PilgrimGroups to the PilgrimGroupResponse schema and attaches derived GeoPosition.
         """
-        return [g.model_copy(deep=True) for g in self.groups.values()]
+        responses = []
+        for g in self.groups.values():
+            pos = resolve_position(self.graph, g.current_edge_id, g.progress)
+            
+            resp = PilgrimGroupResponse(
+                group_id=g.group_id,
+                count=g.count,
+                speed_mps=g.speed_mps,
+                progress=g.progress,
+                status=g.status,
+                current_edge_id=g.current_edge_id,
+                destination_zone_id=g.destination_zone_id,
+                updated_at=g.updated_at,
+                position=pos
+            )
+            responses.append(resp)
+            
+        return responses
         
     def advance(self, delta_time_s: float):
         """
