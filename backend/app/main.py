@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from .api import simulation
 
 app = FastAPI(title="VARI OS API", version="0.1.0")
 
@@ -10,6 +11,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(simulation.router)
 
 @app.get("/api/health")
 def health():
