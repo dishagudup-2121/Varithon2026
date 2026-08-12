@@ -1,8 +1,9 @@
 from fastapi.testclient import TestClient
 from app.main import app
-from app.api.simulation import manager
+from app.api.simulation import simulation_loop_instance
 from app.schemas.simulation import SimulationStateResponse
 
+manager = simulation_loop_instance.manager
 client = TestClient(app)
 
 def test_get_simulation_state_success():
