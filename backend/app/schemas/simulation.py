@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import List, Optional, Literal
 from datetime import datetime
+from .crowd import CrowdStateSnapshot
 
 class GeoPosition(BaseModel):
     lat: float = Field(ge=-90.0, le=90.0)
@@ -21,3 +22,4 @@ class SimulationStateResponse(BaseModel):
     simulation_time: str
     tick: int
     groups: List[PilgrimGroupResponse]
+    crowd: CrowdStateSnapshot

@@ -15,8 +15,33 @@ export interface PilgrimGroupState {
   position: GeoPosition | null;
 }
 
+export interface CrowdEdgeLoad {
+  edge_id: string;
+  pilgrim_count: number;
+  group_count: number;
+  moving_group_count: number;
+  stopped_group_count: number;
+  congested_group_count: number;
+}
+
+export interface CrowdSummary {
+  total_pilgrims: number;
+  total_groups: number;
+  active_edge_count: number;
+  moving_group_count: number;
+  stopped_group_count: number;
+  congested_group_count: number;
+  unresolved_group_count: number;
+}
+
+export interface CrowdStateSnapshot {
+  summary: CrowdSummary;
+  edges: CrowdEdgeLoad[];
+}
+
 export interface SimulationState {
   simulation_time: string;
   tick: number;
   groups: PilgrimGroupState[];
+  crowd: CrowdStateSnapshot;
 }

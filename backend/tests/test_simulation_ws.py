@@ -17,6 +17,7 @@ def test_websocket_accepts_and_sends_initial_state(test_client):
         assert "simulation_time" in data
         assert "tick" in data
         assert "groups" in data
+        assert "crowd" in data
 
 def test_rest_api_still_works_and_does_not_advance_tick(test_client):
     response_init = test_client.get("/api/simulation/state")

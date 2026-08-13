@@ -3,6 +3,7 @@ import logging
 from typing import Set
 from fastapi import WebSocket, WebSocketDisconnect
 from .state_manager import SimulationStateManager
+from .crowd_aggregator import aggregate_crowd
 from ..schemas.simulation import SimulationStateResponse
 
 logger = logging.getLogger(__name__)
@@ -18,10 +19,12 @@ class SimulationLoop:
         """Atomically reads current state (used by REST GET and WS initial connect)"""
         async with self.lock:
             snapshot = self.manager.get_state_snapshot()
+            crowd = aggregate_crowd(self.manager.graph, list(self.manager.groups.values()))
             resp = SimulationStateResponse(
                 simulation_time=self.manager.sim_time.isoformat(),
                 tick=self.manager.tick,
-                groups=snapshot
+                groups=snapshot,
+                crowd=crowd
             )
         return resp
         
@@ -30,10 +33,12 @@ class SimulationLoop:
         async with self.lock:
             self.manager.advance(1.0)
             snapshot = self.manager.get_state_snapshot()
+            crowd = aggregate_crowd(self.manager.graph, list(self.manager.groups.values()))
             resp = SimulationStateResponse(
                 simulation_time=self.manager.sim_time.isoformat(),
                 tick=self.manager.tick,
-                groups=snapshot
+                groups=snapshot,
+                crowd=crowd
             )
         # Broadcast outside of lock
         await self.broadcast(resp)
@@ -48,10 +53,12 @@ class SimulationLoop:
                 async with self.lock:
                     self.manager.advance(1.0)
                     snapshot = self.manager.get_state_snapshot()
+                    crowd = aggregate_crowd(self.manager.graph, list(self.manager.groups.values()))
                     resp = SimulationStateResponse(
                         simulation_time=self.manager.sim_time.isoformat(),
                         tick=self.manager.tick,
-                        groups=snapshot
+                        groups=snapshot,
+                        crowd=crowd
                     )
                 
                 # Broadcast outside of lock
