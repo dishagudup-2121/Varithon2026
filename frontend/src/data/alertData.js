@@ -1,0 +1,108 @@
+export const alertSummary = [
+  {
+    id: "critical",
+    labelKey: "alerts.critical",
+    value: 2,
+  },
+  {
+    id: "high",
+    labelKey: "alerts.high",
+    value: 4,
+  },
+  {
+    id: "medium",
+    labelKey: "alerts.medium",
+    value: 6,
+  },
+  {
+    id: "resolved",
+    labelKey: "alerts.resolved",
+    value: 18,
+  },
+];
+
+export const alertData = [
+  {
+    id: 1,
+    severity: "critical",
+    type: "crowd",
+    zone: "Zone 6",
+    titleKey: "alerts.data.criticalCrowd",
+    descriptionKey: "alerts.data.criticalCrowdDescription",
+    time: "2 min ago",
+    riskScore: 82,
+    predictedTime: "30 min",
+    recommendationKey: "alerts.data.crowdRecommendation",
+    status: "active",
+  },
+
+  {
+    id: 2,
+    severity: "high",
+    type: "heat",
+    zone: "Zone 4",
+    titleKey: "alerts.data.heatRisk",
+    descriptionKey: "alerts.data.heatRiskDescription",
+    time: "5 min ago",
+    riskScore: 71,
+    predictedTime: "45 min",
+    recommendationKey: "alerts.data.heatRecommendation",
+    status: "active",
+  },
+
+  {
+    id: 3,
+    severity: "high",
+    type: "resource",
+    zone: "Zone 2",
+    titleKey: "alerts.data.resourceShortage",
+    descriptionKey: "alerts.data.resourceShortageDescription",
+    time: "8 min ago",
+    riskScore: 68,
+    predictedTime: "20 min",
+    recommendationKey: "alerts.data.resourceRecommendation",
+    status: "active",
+  },
+
+  {
+    id: 4,
+    severity: "medium",
+    type: "crowd",
+    zone: "Zone 3",
+    titleKey: "alerts.data.crowdIncrease",
+    descriptionKey: "alerts.data.crowdIncreaseDescription",
+    time: "12 min ago",
+    riskScore: 54,
+    predictedTime: "60 min",
+    recommendationKey: "alerts.data.monitorRecommendation",
+    status: "active",
+  },
+
+  {
+    id: 5,
+    severity: "medium",
+    type: "weather",
+    zone: "Zone 5",
+    titleKey: "alerts.data.weatherRisk",
+    descriptionKey: "alerts.data.weatherRiskDescription",
+    time: "15 min ago",
+    riskScore: 48,
+    predictedTime: "60 min",
+    recommendationKey: "alerts.data.weatherRecommendation",
+    status: "active",
+  },
+
+  {
+    id: 6,
+    severity: "resolved",
+    type: "medical",
+    zone: "Zone 1",
+    titleKey: "alerts.data.medicalResolved",
+    descriptionKey: "alerts.data.medicalResolvedDescription",
+    time: "32 min ago",
+    riskScore: 20,
+    predictedTime: "-",
+    recommendationKey: "alerts.data.resolvedRecommendation",
+    status: "resolved",
+  },
+];
