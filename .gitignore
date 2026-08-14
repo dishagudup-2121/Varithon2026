@@ -1,4 +1,26 @@
+
+# Node modules
+**/node_modules/
+**/dist/
+**/dist-ssr/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment & Local files
+*.local
+.env
+.env.*
+
+# Editor files
+.vscode/
+.idea/
+
 venv/
 __pycache__/
 *.pyc
+
 .DS_Store
