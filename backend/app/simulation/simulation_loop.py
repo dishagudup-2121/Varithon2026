@@ -4,13 +4,16 @@ from typing import Set
 from fastapi import WebSocket, WebSocketDisconnect
 from .state_manager import SimulationStateManager
 from .crowd_aggregator import aggregate_crowd
+from .temporal_manager import TemporalStateManager
 from ..schemas.simulation import SimulationStateResponse
+from ..schemas.crowd import TemporalCrowdSnapshot
 
 logger = logging.getLogger(__name__)
 
 class SimulationLoop:
     def __init__(self):
         self.manager = SimulationStateManager()
+        self.temporal_manager = TemporalStateManager()
         self.lock = asyncio.Lock()
         self.clients: Set[WebSocket] = set()
         self.task: asyncio.Task | None = None
@@ -34,6 +37,14 @@ class SimulationLoop:
             self.manager.advance(1.0)
             snapshot = self.manager.get_state_snapshot()
             crowd = aggregate_crowd(self.manager.graph, list(self.manager.groups.values()))
+            
+            ts = TemporalCrowdSnapshot(
+                tick=self.manager.tick,
+                simulation_time=self.manager.sim_time.isoformat(),
+                snapshot=crowd
+            )
+            self.temporal_manager.append(ts)
+            
             resp = SimulationStateResponse(
                 simulation_time=self.manager.sim_time.isoformat(),
                 tick=self.manager.tick,
@@ -45,6 +56,17 @@ class SimulationLoop:
         return resp
 
     async def _loop(self):
+        # Tick 0 initialization: strictly ordered BEFORE first advance
+        async with self.lock:
+            if self.temporal_manager.get_latest_tick() is None:
+                crowd = aggregate_crowd(self.manager.graph, list(self.manager.groups.values()))
+                ts = TemporalCrowdSnapshot(
+                    tick=self.manager.tick,
+                    simulation_time=self.manager.sim_time.isoformat(),
+                    snapshot=crowd
+                )
+                self.temporal_manager.append(ts)
+                
         while True:
             try:
                 await asyncio.sleep(1.0)
@@ -54,6 +76,14 @@ class SimulationLoop:
                     self.manager.advance(1.0)
                     snapshot = self.manager.get_state_snapshot()
                     crowd = aggregate_crowd(self.manager.graph, list(self.manager.groups.values()))
+                    
+                    ts = TemporalCrowdSnapshot(
+                        tick=self.manager.tick,
+                        simulation_time=self.manager.sim_time.isoformat(),
+                        snapshot=crowd
+                    )
+                    self.temporal_manager.append(ts)
+                    
                     resp = SimulationStateResponse(
                         simulation_time=self.manager.sim_time.isoformat(),
                         tick=self.manager.tick,

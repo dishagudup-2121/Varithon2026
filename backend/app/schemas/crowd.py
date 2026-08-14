@@ -21,3 +21,8 @@ class CrowdSummary(BaseModel):
 class CrowdStateSnapshot(BaseModel):
     summary: CrowdSummary
     edges: List[CrowdEdgeLoad]
+
+class TemporalCrowdSnapshot(BaseModel):
+    tick: int
+    simulation_time: str
+    snapshot: CrowdStateSnapshot

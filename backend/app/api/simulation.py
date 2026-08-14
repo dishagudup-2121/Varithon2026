@@ -1,5 +1,7 @@
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Query
+from typing import List
 from ..schemas.simulation import SimulationStateResponse
+from ..schemas.crowd import TemporalCrowdSnapshot
 from ..simulation.simulation_loop import simulation_loop_instance
 
 router = APIRouter(prefix="/api/simulation", tags=["Simulation"])
@@ -11,6 +13,15 @@ async def get_simulation_state():
     Does NOT advance the simulation tick.
     """
     return await simulation_loop_instance.get_state_snapshot_safe()
+
+@router.get("/history", response_model=List[TemporalCrowdSnapshot])
+async def get_simulation_history(limit: int = Query(60, description="Number of recent ticks to return")):
+    """
+    Returns the temporal crowd history up to the specified limit.
+    The server strictly bounds the response to a maximum limit (e.g. 900 ticks) to protect memory/network.
+    """
+    # Uses the shared temporal_manager from the simulation loop
+    return simulation_loop_instance.temporal_manager.get_history(limit=limit, max_limit=900)
 
 @router.websocket("/ws")
 async def simulation_websocket(websocket: WebSocket):
