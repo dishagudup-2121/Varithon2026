@@ -1,3 +1,4 @@
+
 # Node modules
 **/node_modules/
 **/dist/
@@ -17,4 +18,9 @@ yarn-error.log*
 # Editor files
 .vscode/
 .idea/
+
+venv/
+__pycache__/
+*.pyc
+
 .DS_Store
