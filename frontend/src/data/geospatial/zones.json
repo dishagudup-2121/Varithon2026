@@ -6,9 +6,6 @@
       "properties": {
         "zone_id": "Z1",
         "name": "Alandi Temple Core Zone",
-        "risk_level": "critical",
-        "current_density": 95,
-        "eta_critical": "0 min",
         "center": [18.6659, 73.8969]
       },
       "geometry": {
@@ -27,9 +24,6 @@
       "properties": {
         "zone_id": "Z2",
         "name": "Dehu Phata Intersection",
-        "risk_level": "medium",
-        "current_density": 65,
-        "eta_critical": "45 min",
         "center": [18.6300, 73.8800]
       },
       "geometry": {
@@ -48,9 +42,6 @@
       "properties": {
         "zone_id": "Z3",
         "name": "Dighi Checkpost",
-        "risk_level": "high",
-        "current_density": 82,
-        "eta_critical": "15 min",
         "center": [18.5900, 73.8700]
       },
       "geometry": {

@@ -1,0 +1,16 @@
+{
+  "model_identifier": "absolute_edge_load",
+  "model_version": "random_forest_v1",
+  "features": [
+    "current_load",
+    "load_t_minus_1",
+    "load_t_minus_5",
+    "load_t_minus_15",
+    "absolute_load_change_1",
+    "absolute_load_change_5",
+    "absolute_load_change_15",
+    "consecutive_occupied_ticks"
+  ],
+  "test_mae": 89.4358272473523,
+  "baseline_mae": 92.63881893393503
+}

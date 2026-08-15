@@ -1,46 +1,592 @@
 {
-  "app_title": "VARI OS",
-  "app_subtitle": "Predict • Recommend • Simulate • Approve • Act",
-  "live": "LIVE",
-  "dashboard": "Dashboard",
-  "digital_twin": "Digital Twin",
-  "alerts": "Alerts",
-  "resources": "Resources",
-  "what_if_simulation": "What-If Simulation",
-  "approvals": "Approvals",
-  "reports": "Reports",
-  "settings": "Settings",
-  "total_pilgrims": "TOTAL PILGRIMS",
-  "high_risk_zones": "HIGH RISK ZONES",
-  "ambulances": "AMBULANCES",
-  "volunteers": "VOLUNTEERS",
-  "water_tankers": "WATER TANKERS",
-  "avg_temperature": "AVG TEMPERATURE",
-  "active_alerts": "ACTIVE ALERTS",
-  "view_all": "View All",
-  "ai_recommendation": "AI RECOMMENDATION",
-  "based_on_prediction": "Based on current prediction",
-  "simulate_scenario": "SIMULATE SCENARIO",
-  "what_if_simulation_title": "WHAT-IF SIMULATION",
-  "scenario": "Scenario",
-  "run_simulation": "Run Simulation",
-  "current_state": "CURRENT STATE",
-  "simulation_result": "SIMULATION RESULT",
-  "impact": "IMPACT",
-  "approve": "Approve",
-  "modify": "Modify",
-  "reject": "Reject",
-  "legend": "LEGEND",
-  "zone": "Zone",
-  "critical": "Critical",
-  "high": "High",
-  "medium": "Medium",
-  "low": "Low",
-  "available": "Available",
-  "active": "Active",
-  "vs_last_hour": "vs last hour",
-  "congestion": "Congestion",
-  "avg_eta": "Avg ETA",
-  "risk_zones": "Risk Zones",
-  "eta": "ETA"
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "solution": "Solution",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "signup": "Sign Up"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "alerts": "Alerts",
+    "resources": "Resources",
+    "digitalTwin": "Digital Twin",
+    "simulation": "Simulation",
+    "assistant": "AI Assistant",
+    "help": "Help"
+  },
+  "hero": {
+    "tagline": "Technology that walks with the Wari.",
+    "subtitle": "Safer journeys. Smarter decisions. Stronger connections.",
+    "getStarted": "Get Started",
+    "explore": "Explore VariSetu"
+  },
+  "intro": {
+    "heading": "एकत्र चालूया. सुरक्षित चालूया.",
+    "description": "VariSetu connects people, information and resources to help make the Wari journey safer, smarter and more resilient."
+  },
+  "purpose": {
+    "safety": "SAFETY",
+    "safetyDesc": "Helping identify emerging risks before they become critical.",
+    "connect": "CONNECT",
+    "connectDesc": "Connecting people, resources and information when they are needed.",
+    "guide": "GUIDE",
+    "guideDesc": "Helping authorities make informed decisions during the journey."
+  },
+  "footer": {
+    "tagline": "Technology that walks with the Wari.",
+    "built": "Built for a safer and smarter Wari."
+  },
+  "auth": {
+    "login": "Login",
+    "welcomeBack": "Welcome back",
+    "continueJourney": "Continue your journey with VariSetu.",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create an account",
+    "joinVarisetu": "Join VariSetu",
+    "chooseExperience": "Choose how you want to experience VariSetu.",
+    "chooseLanguage": "Choose your preferred language",
+    "english": "English",
+    "marathi": "मराठी",
+    "continueInEnglish": "Continue in English",
+    "continueInMarathi": "मराठीत पुढे जा",
+    "fullName": "Full Name",
+    "confirmPassword": "Confirm Password",
+    "createAccountBtn": "Create Account",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign in"
+  },
+  "dashboard": {
+    "navigation": "Navigation",
+    "title": "Command Center",
+    "subtitle": "Wari situation overview",
+    "authorityUser": "Authority User",
+    "logout": "Logout",
+    "nav": {
+      "dashboard": "Dashboard",
+      "alerts": "Alerts",
+      "resources": "Resources",
+      "digitalTwin": "Digital Twin",
+      "simulation": "Simulation",
+      "assistant": "AI Assistant",
+      "help": "Help"
+    },
+    "goodToSeeYou": "VARISETU COMMAND CENTER",
+    "welcome": "Welcome to VariSetu",
+    "overview": "Monitor the Wari, understand emerging risks, and make informed decisions.",
+    "systemOperational": "System Operational",
+    "totalPilgrims": "Total Pilgrims",
+    "highRiskZones": "High-Risk Zones",
+    "medicalCases": "Medical Cases",
+    "availableAmbulances": "Available Ambulances",
+    "availableVolunteers": "Available Volunteers",
+    "updatedJustNow": "Updated just now",
+    "needsAttention": "Needs attention",
+    "currentCases": "Current cases",
+    "readyForDispatch": "Ready for dispatch",
+    "availableNow": "Available now",
+    "digitalTwin": {
+      "title": "Digital Twin",
+      "subtitle": "Live operational overview",
+      "preview": "Digital Twin Preview",
+      "open": "Open Digital Twin"
+    },
+    "howItWorks": "How does this work?",
+    "activeAlerts": "Active Alerts",
+    "alertsSubtitle": "Situations requiring attention",
+    "viewAllAlerts": "View all alerts",
+    "alerts": {
+      "highRisk": "HIGH RISK",
+      "heatRisk": "HEAT RISK",
+      "resourceAlert": "RESOURCE ALERT",
+      "congestion": "Critical congestion predicted within 30 minutes.",
+      "temperature": "Temperature and crowd density are increasing.",
+      "ambulance": "Ambulance availability is decreasing."
+    },
+    "aiRecommendation": "AI Recommendation",
+    "recommendationSubtitle": "Recommended response based on current conditions",
+    "recommendationText": "Zone 6 is predicted to experience increasing crowd pressure. Consider deploying nearby emergency resources and volunteers.",
+    "recommendations": {
+      "ambulance": "Deploy to Zone 6",
+      "volunteers": "Deploy to Zone 6",
+      "water": "Deploy to Zone 6"
+    },
+    "simulateResponse": "Simulate Response",
+    "reviewRecommendation": "Review Recommendation",
+    "decisionLoop": "Decision Loop",
+    "decisionLoopSubtitle": "Predict → Recommend → Simulate → Approve → Act",
+    "loop": {
+      "predict": "Predict",
+      "recommend": "Recommend",
+      "simulate": "Simulate",
+      "approve": "Approve",
+      "act": "Act"
+    },
+    "stats": {
+      "pilgrims": "Total Pilgrims",
+      "riskZones": "High-Risk Zones",
+      "medical": "Medical Cases",
+      "ambulances": "Available Ambulances",
+      "volunteers": "Available Volunteers",
+      "pilgrimsSubtitle": "Updated just now",
+      "riskZonesSubtitle": "Needs attention",
+      "medicalSubtitle": "Current cases",
+      "ambulancesSubtitle": "Ready for dispatch",
+      "volunteersSubtitle": "Available now",
+      "unavailable": "Data Unavailable"
+    }
+  },
+  "dashboardActions": {
+    "whatIfTitle": "What-If Analysis",
+    "whatIfHeading": "Test a decision before acting",
+    "whatIfDescription": "Simulate route closures, volunteer deployment and emergency resource movement."
+  },
+  "alerts": {
+    "title": "Alerts & Risk Monitoring",
+    "subtitle": "Monitor predicted and active operational risks",
+    "commandCenter": "VARISETU COMMAND CENTER",
+    "overviewTitle": "Risk & Alert Overview",
+    "overviewDescription": "Review emerging risks, understand their severity and examine recommended actions before conditions become critical.",
+    "critical": "Critical Alerts",
+    "high": "High Risk Alerts",
+    "medium": "Medium Risk Alerts",
+    "resolved": "Resolved Alerts",
+    "filters": "Filter Alerts",
+    "allSeverity": "All Severity",
+    "allTypes": "All Types",
+    "refresh": "Refresh",
+    "noAlerts": "No alerts found",
+    "noAlertsDescription": "Try changing the selected filters.",
+    "riskScore": "Risk Score",
+    "predictedIn": "Predicted In",
+    "recommendedAction": "Recommended Action",
+    "viewDetails": "View Details",
+    "detailsTitle": "Alert Details",
+    "alert": "Alert",
+    "status": "Status",
+    "close": "Close",
+    "severity": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "resolved": "Resolved"
+    },
+    "statusValues": {
+      "active": "Active",
+      "resolved": "Resolved"
+    },
+    "types": {
+      "crowd": "Crowd",
+      "heat": "Heat",
+      "resource": "Resource",
+      "weather": "Weather",
+      "medical": "Medical"
+    },
+    "data": {
+      "criticalCrowd": "Critical Crowd Congestion",
+      "criticalCrowdDescription": "Crowd density in Zone 6 is increasing rapidly and may reach a critical level within the next 30 minutes.",
+      "crowdRecommendation": "Consider deploying nearby volunteers and emergency resources.",
+      "heatRisk": "High Heat Risk",
+      "heatRiskDescription": "Temperature and crowd density in Zone 4 indicate an increasing heat-related risk.",
+      "heatRecommendation": "Consider deploying water resources and medical support.",
+      "resourceShortage": "Resource Availability Warning",
+      "resourceShortageDescription": "Emergency resource availability in Zone 2 is decreasing.",
+      "resourceRecommendation": "Review nearby resource availability and consider redeployment.",
+      "crowdIncrease": "Increasing Crowd Density",
+      "crowdIncreaseDescription": "Crowd density is increasing in Zone 3 and should be monitored.",
+      "monitorRecommendation": "Continue monitoring the zone.",
+      "weatherRisk": "Weather Risk",
+      "weatherRiskDescription": "Changing weather conditions may affect movement and crowd conditions.",
+      "weatherRecommendation": "Monitor weather conditions and route status.",
+      "medicalResolved": "Medical Surge Resolved",
+      "medicalResolvedDescription": "The medical resource pressure reported in Zone 1 has returned to normal.",
+      "resolvedRecommendation": "No immediate action required."
+    }
+  },
+  "resources": {
+    "title": "Resource Management",
+    "subtitle": "Monitor and coordinate field resources",
+    "commandCenter": "VARISETU COMMAND CENTER",
+    "overviewTitle": "Resource Overview",
+    "overviewDescription": "Monitor available resources and review recommended deployments for areas that need additional support.",
+    "ambulances": "Ambulances",
+    "volunteers": "Volunteers",
+    "waterTankers": "Water Tankers",
+    "medicalTeams": "Medical Teams",
+    "available": "Available",
+    "recommendedAllocation": "Recommended Allocation",
+    "allocationSubtitle": "Suggested resource movements based on current operational conditions",
+    "resource": "Resource",
+    "from": "From",
+    "destination": "Destination",
+    "eta": "ETA",
+    "action": "Action",
+    "assign": "Assign",
+    "testSimulation": "Test in Simulation",
+    "assigned": "assigned",
+    "aiSectionTitle": "Recommended Resource Deployment",
+    "aiSectionSubtitle": "These recommendations will later be generated by the optimization engine.",
+    "prototypeNote": "Current resource values are prototype data. In the integrated system, these values will come from the backend and optimization engine.",
+    "types": {
+      "ambulance": "Emergency Ambulance",
+      "volunteers": "Volunteer Team",
+      "water": "Water Tanker",
+      "medical": "Medical Team"
+    }
+  },
+  "simulation": {
+    "title": "What-If Simulation",
+    "subtitle": "Test possible actions before execution",
+    "commandCenter": "VARISETU COMMAND CENTER",
+    "pageTitle": "Decision Simulation",
+    "pageDescription": "Test possible interventions in a virtual environment and compare their predicted impact before an authorized decision is made.",
+    "selectedResource": "Selected Resource",
+    "selectedResourceDescription": "This resource deployment will be considered for the simulation.",
+    "chooseScenario": "Choose a Scenario",
+    "chooseScenarioSubtitle": "Select an action to simulate",
+    "run": "Run Simulation",
+    "reset": "Reset",
+    "resultsTitle": "Simulation Results",
+    "before": "Before",
+    "after": "After",
+    "comparisonTitle": "Before vs After",
+    "comparisonSubtitle": "Estimated impact of the selected intervention",
+    "metrics": {
+      "crowd": "Crowd",
+      "risk": "Risk Score",
+      "eta": "Average ETA",
+      "affectedZones": "Affected Zones"
+    },
+    "recommendationTitle": "Recommended Response",
+    "humanApprovalNote": "The simulation provides decision support. The final operational decision remains with the authorized human authority.",
+    "approve": "Approve Action",
+    "reject": "Reject",
+    "approved": "Action Approved",
+    "approvedDescription": "The simulated action has been approved for the next operational step.",
+    "scenarios": {
+      "closeRoute": {
+        "title": "Close a Route",
+        "description": "Simulate the impact of temporarily closing a route and redirecting movement."
+      },
+      "addVolunteers": {
+        "title": "Deploy Volunteers",
+        "description": "Simulate deploying additional volunteers to a high-pressure zone."
+      },
+      "deployAmbulance": {
+        "title": "Deploy Ambulance",
+        "description": "Simulate moving an available ambulance toward a high-risk zone."
+      }
+    },
+    "results": {
+      "closeRouteRecommendation": "Closing the selected route may reduce pressure in the high-risk zone, but could increase travel time on alternate routes.",
+      "volunteerRecommendation": "Deploying additional volunteers may reduce operational risk and improve movement management without changing the route network.",
+      "ambulanceRecommendation": "Deploying the nearby ambulance may improve emergency response readiness in the high-risk zone."
+    }
+  },
+  "assistant": {
+    "title": "AI Assistant",
+    "subtitle": "Decision Intelligence Assistant",
+    "commandCenter": "VARISETU COMMAND CENTER",
+    "pageTitle": "How can I help?",
+    "description": "Ask about current risks, resources, routes or simulation results. The assistant explains available system information to support human decision-making.",
+    "emptyTitle": "Ask about the Wari situation",
+    "emptyDescription": "Choose a question below or type your own question to understand the current operational situation.",
+    "placeholder": "Ask about risks, resources or routes...",
+    "clear": "Clear conversation",
+    "suggestions": {
+      "highRisk": "Where is the highest risk zone?",
+      "nextAmbulance": "Where should the next ambulance go?",
+      "routeRisk": "Which route has the highest risk?",
+      "simulation": "What happened in the latest simulation?"
+    },
+    "responses": {
+      "highRisk": "Zone 6 currently has the highest predicted operational risk. The system indicates increasing crowd pressure and recommends reviewing available resources.",
+      "nextAmbulance": "The nearest available ambulance should be considered for the highest-priority medical or emergency zone. Final deployment remains with the authorized official.",
+      "routeRisk": "The system currently identifies the route approaching Zone 6 as having elevated congestion risk. Check the Alerts and Simulation modules before changing the route.",
+      "simulation": "The latest simulation compares the selected intervention with the current state. Review the Before vs After results and approve the action only after human verification.",
+      "default": "I can explain information available in the VARISETU command center. Once connected to the backend AI service, I will answer this question using current system data.",
+      "offline": "The AI Context Engine is currently offline. This assistant will provide operational intelligence once the backend service is connected."
+    },
+    "disclaimer": "AI provides explanations and decision support. Final operational decisions remain with authorized human officials."
+  },
+  "howItWorks": {
+    "close": "Close",
+    "dashboard": {
+      "title": "How the Dashboard works",
+      "description": "The Dashboard gives an overview of the current Wari situation.",
+      "steps": [
+        "Check the current risk and crowd indicators.",
+        "Review active alerts that may need attention.",
+        "Check available emergency and support resources.",
+        "Use Digital Twin and Simulation when you need deeper analysis."
+      ],
+      "note": "The Dashboard supports officials by bringing important information together in one place."
+    },
+    "alerts": {
+      "title": "How Alerts work",
+      "description": "Alerts highlight situations that may require attention.",
+      "steps": [
+        "Check the affected zone.",
+        "Review the predicted risk and available information.",
+        "Check the recommended response.",
+        "Use Resources or Simulation to evaluate the next action."
+      ],
+      "note": "An alert is a decision-support signal. Officials should verify the situation before taking action."
+    },
+    "resources": {
+      "title": "How Resource Management works",
+      "description": "This section shows available resources and suggested deployments.",
+      "steps": [
+        "Select the resource you want to review.",
+        "Check its current location and availability.",
+        "Review the suggested destination and estimated time.",
+        "Use Test in Simulation to understand the possible impact."
+      ],
+      "note": "Resource recommendations support operational planning. Final deployment remains with the authorized authority."
+    },
+    "digitalTwin": {
+      "title": "How Digital Twin works",
+      "description": "The Digital Twin provides a visual representation of the operational environment.",
+      "steps": [
+        "Select a zone or route on the map.",
+        "Review the current crowd and resource situation.",
+        "Observe important operational changes.",
+        "Use Simulation when you want to test a possible action."
+      ],
+      "note": "The Digital Twin represents operational information and simulation data; it does not replace field verification."
+    },
+    "simulation": {
+      "title": "How What-If Simulation works",
+      "description": "Simulation lets officials compare possible actions before approving them.",
+      "steps": [
+        "Select a situation you want to test.",
+        "Run the simulation.",
+        "Compare the predicted situation before and after the action.",
+        "Review the recommendation and approve or reject the action."
+      ],
+      "note": "Simulation provides decision support. Final operational decisions remain with authorized human officials."
+    },
+    "assistant": {
+      "title": "How the AI Assistant works",
+      "description": "The AI Assistant explains information from the VARISETU system in simple language.",
+      "steps": [
+        "Ask a question about risks, resources, routes or simulations.",
+        "The system uses available operational information.",
+        "The assistant explains the information in an easier-to-understand form.",
+        "Use the explanation together with the system data before making a decision."
+      ],
+      "note": "The AI Assistant explains information and supports decisions. It does not make operational decisions."
+    }
+  },
+  "help": {
+    "open": "How does this work?",
+    "commonLabel": "Simple explanation",
+    "commonSteps": "How it works",
+    "commonNote": "This explanation is designed to help every user understand the feature before using it.",
+    "close": "Got it",
+    "dashboard": {
+      "title": "How does the Command Center work?",
+      "description": "The Command Center gives authorities one place to monitor the Wari situation, understand risks and review recommended actions.",
+      "steps": [
+        "View the current situation through key indicators.",
+        "Check active alerts and areas requiring attention.",
+        "Review AI-generated recommendations.",
+        "Use the Digital Twin and simulation tools to understand possible outcomes."
+      ]
+    },
+    "alerts": {
+      "title": "How do Active Alerts work?",
+      "description": "Active Alerts highlight situations that may require attention, such as high crowd risk, heat risk or resource shortages.",
+      "steps": [
+        "The system receives current operational information.",
+        "Potentially important situations are identified.",
+        "Alerts are shown according to their severity.",
+        "Authorities can review the situation and decide what action to take."
+      ]
+    },
+    "resources": {
+      "title": "How does Resource Management work?",
+      "description": "Resource Management helps authorities understand where available resources are located and where they may be needed.",
+      "steps": [
+        "View available ambulances, volunteers and other resources.",
+        "Identify areas with higher requirements.",
+        "Review resource assignments.",
+        "Authorities can approve or modify the recommended deployment."
+      ]
+    },
+    "digitalTwin": {
+      "title": "How does the Digital Twin work?",
+      "description": "The Digital Twin provides a virtual representation of the operational Wari environment, showing zones, routes, crowd conditions, risks and resources.",
+      "steps": [
+        "The virtual environment represents important Wari entities.",
+        "Current operational information is shown on the map.",
+        "Authorities can examine routes, risks and resources.",
+        "What-if scenarios can be used to understand possible outcomes."
+      ]
+    },
+    "simulation": {
+      "title": "How does What-If Simulation work?",
+      "description": "Simulation allows an authority to test a possible action before applying it to the real situation.",
+      "steps": [
+        "Select a possible intervention.",
+        "The system changes the virtual scenario.",
+        "The resulting route and operational changes are calculated.",
+        "Before-and-after results can be compared before making a decision."
+      ]
+    },
+    "assistant": {
+      "title": "How does the AI Assistant work?",
+      "description": "The AI Assistant explains information and recommendations in simple language so that authorities can understand the situation more easily.",
+      "steps": [
+        "Ask a question in natural language.",
+        "The assistant uses available system information.",
+        "It explains the relevant prediction or recommendation.",
+        "The final operational decision remains with the authorized human."
+      ]
+    }
+  },
+  "validation": {
+    "nameRequired": "Full name is required",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Please enter a valid email",
+    "passwordRequired": "Password is required",
+    "passwordShort": "Password must be at least 6 characters",
+    "passwordMismatch": "Passwords do not match",
+    "languageRequired": "Please select a language"
+  },
+  "solution": {
+    "hero": {
+      "title": "Technology that walks with the Wari.",
+      "subtitle": "VariSetu transforms live pilgrimage movement, operational signals, and simulation data into actionable intelligence for safer, smarter Wari management.",
+      "ctaPrimary": "Explore Live Prototype →",
+      "ctaSecondary": "Explore Features →",
+      "tagline": "From situational awareness to decision support."
+    },
+    "problem": {
+      "title": "The Problem",
+      "p1": "The Wari involves large-scale movement of pilgrims across interconnected routes. Authorities need situational awareness across a geographically distributed pilgrimage environment.",
+      "p2": "Pilgrim movement, congestion, safety situations, medical needs, transportation/resources and operational conditions can change over time. Fragmented information makes it harder to understand the current situation and evaluate decisions before acting.",
+      "p3": "Traditional/static monitoring does not provide a unified operational picture or a safe way to test 'what-if' decisions.",
+      "points": {
+        "1": "Large-scale pilgrim movement",
+        "2": "Dynamic congestion",
+        "3": "Distributed operational zones",
+        "4": "Emergency/resource coordination",
+        "5": "Need for faster decision-making"
+      }
+    },
+    "proposed": {
+      "title": "Our Solution — VariSetu",
+      "description": "VariSetu is a decision-intelligence platform for Wari operations. It brings together a Digital Twin, Simulation Engine, Operational Dashboard, Alerts, Resource visibility, an AI/decision-support layer, and What-if analysis.",
+      "flow": "LIVE / SIMULATED DATA → DIGITAL TWIN → SITUATIONAL AWARENESS → RISK / CONGESTION UNDERSTANDING → WHAT-IF SIMULATION → DECISION SUPPORT → OPERATIONAL ACTION"
+    },
+    "howItWorks": {
+      "title": "How VariSetu Works",
+      "steps": {
+        "01": { "title": "01 — Observe", "desc": "Capture the current operational state and pilgrim movement." },
+        "02": { "title": "02 — Understand", "desc": "Visualize groups, routes, operational zones and simulated congestion." },
+        "03": { "title": "03 — Predict", "desc": "Use the simulation environment to understand how movement may evolve." },
+        "04": { "title": "04 — Simulate", "desc": "Test decisions such as route changes, closures, resource deployment and emergency movement." },
+        "05": { "title": "05 — Act", "desc": "Use the resulting information to support operational decisions." }
+      },
+      "note": "Note: The current prototype demonstrates the platform capabilities using a live simulation engine. Backend integration with production operational APIs is planned."
+    },
+    "architecture": {
+      "title": "System Architecture",
+      "frontend": "React Frontend (Dashboard, Maps, Alerts, Resources, Simulation, AI)",
+      "backend": "FastAPI Backend Layer",
+      "digitalTwin": "Digital Twin Stream",
+      "simulation": "Simulation Engine (WebSockets)",
+      "future": "Future APIs / Services (Planned)",
+      "data": "Pilgrim Groups, Routes, Movement, Congestion, Zones"
+    },
+    "digitalTwin": {
+      "title": "Digital Twin",
+      "description": "The Digital Twin provides geographic operational context including the road network and administrative/operational zones (fixed geographic areas). It visualizes pilgrim groups as dynamic entities and displays congestion or simulated load as dynamic states derived from simulation."
+    },
+    "simulation": {
+      "title": "Simulation & What-If Analysis",
+      "description": "Before changing an operational plan in the real world, authorities can evaluate how a proposed intervention may affect movement and resources in a simulated environment.",
+      "examples": "Examples: Route closure, Route change, Resource deployment, Emergency response scenarios."
+    },
+    "decisionIntelligence": {
+      "title": "From Data to Decisions",
+      "flow": "Data → Context → Simulation → Recommendation → Decision",
+      "description": "The platform reduces the gap between raw operational information and actionable decisions.",
+      "aiNote": "AI decision support is designed as the next layer of the platform. The current prototype provides the interface and decision workflow while backend AI integration is being completed."
+    },
+    "prototypeStatus": {
+      "title": "What You Can See in the Prototype",
+      "current": {
+        "title": "CURRENTLY DEMONSTRABLE",
+        "items": [
+          "Interactive operational dashboard",
+          "Digital Twin map",
+          "Simulated pilgrim groups & dynamic movement",
+          "Simulated congestion/load visualization",
+          "Operational zones",
+          "Simulation workflow/interface",
+          "Multilingual UI (English & Marathi)",
+          "Dashboard KPIs derived from available simulation data"
+        ]
+      },
+      "future": {
+        "title": "INTEGRATIONS IN PROGRESS / FUTURE",
+        "items": [
+          "Production operational APIs",
+          "Live field data integrations",
+          "Medical/resource backend feeds",
+          "Production alert feeds",
+          "Full AI optimization engine",
+          "Other unavailable backend services"
+        ]
+      }
+    },
+    "trust": {
+      "title": "Designed for Trust",
+      "description": "VariSetu does not silently invent operational data. We explicitly distinguish data sources:",
+      "live": "LIVE / CONNECTED: Data directly received from an active system or stream.",
+      "simulated": "SIMULATED: Data generated by the Digital Twin / simulation engine for demonstration and scenario analysis.",
+      "unavailable": "UNAVAILABLE: Data for which no backend integration currently exists."
+    },
+    "technology": {
+      "title": "Technology Stack",
+      "items": [
+        "Frontend: React, TypeScript, Tailwind CSS, Vite",
+        "Maps: Leaflet (react-leaflet)",
+        "Backend: FastAPI, Python",
+        "Real-time: WebSockets",
+        "Simulation Engine: Python (Custom physics/routing)",
+        "Internationalization: i18next"
+      ]
+    },
+    "impact": {
+      "title": "Expected Impact",
+      "points": {
+        "1": { "title": "Better situational awareness", "desc": "A unified operational picture of pilgrim movement and simulated conditions." },
+        "2": { "title": "Faster decision-making", "desc": "Decision-makers can understand changing conditions in one interface." },
+        "3": { "title": "Safer scenario planning", "desc": "Potential interventions can be explored before acting." },
+        "4": { "title": "Better resource coordination", "desc": "Future integrations can connect resource availability and movement to the operational picture." },
+        "5": { "title": "Scalable digital infrastructure", "desc": "The architecture can evolve from simulation-based demonstration toward real operational data integrations." }
+      }
+    },
+    "roadmap": {
+      "title": "From Prototype to Operational Platform",
+      "p1": "PHASE 1: Digital Twin + Simulation (Current prototype)",
+      "p2": "PHASE 2: Live operational data integrations (Planned)",
+      "p3": "PHASE 3: Alerts + resource intelligence (Planned)",
+      "p4": "PHASE 4: AI-assisted recommendations (Planned)",
+      "p5": "PHASE 5: Operational decision-support platform (Planned)"
+    },
+    "finalCta": {
+      "title": "See VariSetu in Action",
+      "description": "Explore the live prototype and see how a digital operational picture can support better decisions for the Wari.",
+      "primary": "Open Dashboard →",
+      "secondary": "Back to Features"
+    }
+  }
 }

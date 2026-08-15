@@ -1,10 +1,15 @@
 import asyncio
 import logging
+import os
 from typing import Set
 from fastapi import WebSocket, WebSocketDisconnect
 from .state_manager import SimulationStateManager
 from .crowd_aggregator import aggregate_crowd
 from .temporal_manager import TemporalStateManager
+
+# Configurable multiplier: 1 real second = N simulation seconds
+# Default to 25.0 (25s simulation per 1 real second) for visible demo movement
+SIMULATION_TIME_MULTIPLIER = float(os.environ.get("SIMULATION_TIME_MULTIPLIER", "25.0"))
 from ..schemas.simulation import SimulationStateResponse
 from ..schemas.crowd import TemporalCrowdSnapshot
 
@@ -34,7 +39,7 @@ class SimulationLoop:
     async def manual_tick(self) -> SimulationStateResponse:
         """Manually triggerable tick for deterministic testing"""
         async with self.lock:
-            self.manager.advance(1.0)
+            self.manager.advance(1.0 * SIMULATION_TIME_MULTIPLIER)
             snapshot = self.manager.get_state_snapshot()
             crowd = aggregate_crowd(self.manager.graph, list(self.manager.groups.values()))
             
@@ -73,7 +78,7 @@ class SimulationLoop:
                 
                 # Atomically advance and snapshot
                 async with self.lock:
-                    self.manager.advance(1.0)
+                    self.manager.advance(1.0 * SIMULATION_TIME_MULTIPLIER)
                     snapshot = self.manager.get_state_snapshot()
                     crowd = aggregate_crowd(self.manager.graph, list(self.manager.groups.values()))
                     

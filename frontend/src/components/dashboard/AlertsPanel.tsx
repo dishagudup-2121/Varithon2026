@@ -1,77 +1,95 @@
-import { useTranslation } from 'react-i18next';
-import { AlertTriangle, Info, AlertCircle } from 'lucide-react';
+import { useState } from "react";
+import { AlertTriangle, ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import HelpButton from "../common/HelpButton";
+import HowItWorks from "../common/HowItWorks";
 
-interface Alert {
-  id: string;
-  zone: string;
-  severity: 'critical' | 'high' | 'medium';
-  title: string;
-  description: string;
-  time: string;
-}
 
-const mockAlerts: Alert[] = [
-  {
-    id: '1',
-    zone: 'Zone 6',
-    severity: 'critical',
-    title: 'Critical Risk',
-    description: 'Crowd density high & temperature rising',
-    time: '10:22 AM'
-  },
-  {
-    id: '2',
-    zone: 'Zone 4',
-    severity: 'high',
-    title: 'High Risk',
-    description: 'Congestion increasing rapidly',
-    time: '10:18 AM'
-  },
-  {
-    id: '3',
-    zone: 'Zone 7',
-    severity: 'high',
-    title: 'High Risk',
-    description: 'Water availability low',
-    time: '10:15 AM'
-  }
-];
 
 export default function AlertsPanel() {
   const { t } = useTranslation();
-
-  const getIcon = (severity: string) => {
-    switch(severity) {
-      case 'critical': return <AlertCircle className="w-5 h-5 text-red-500" />;
-      case 'high': return <AlertTriangle className="w-5 h-5 text-orange-500" />;
-      default: return <Info className="w-5 h-5 text-amber-500" />;
-    }
-  };
+  const navigate = useNavigate();
+  const [helpOpen, setHelpOpen] = useState(false);
 
   return (
-    <div className="panel flex flex-col h-[280px]">
-      <div className="panel-header flex justify-between items-center">
-        <span>{t('active_alerts')}</span>
-        <button className="text-[10px] text-slate-400 hover:text-white uppercase">{t('view_all')}</button>
-      </div>
-      <div className="flex-1 overflow-y-auto p-3 space-y-2">
-        {mockAlerts.map(alert => (
-          <div key={alert.id} className="bg-slate-900/50 rounded-lg p-3 border border-slate-700/30 flex gap-3 items-start">
-            <div className="shrink-0 mt-0.5">
-              {getIcon(alert.severity)}
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex justify-between items-start mb-1">
-                <h4 className="text-sm font-bold text-slate-200">
-                  {alert.zone} — {t(alert.severity === 'critical' ? 'critical' : 'high')}
-                </h4>
-                <span className="text-[10px] text-slate-500 whitespace-nowrap ml-2">{alert.time}</span>
+    <>
+      <div className="rounded-2xl border border-[#EDE2D0] bg-white p-5">
+        <div className="mb-5 flex items-center justify-between">
+          <div>
+            <h2 className="font-bold text-[#3D2918]">
+              {t("dashboard.activeAlerts")}
+            </h2>
+
+            <p className="text-sm text-[#8B735D]">
+              {t("dashboard.alertsSubtitle")}
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="rounded-full bg-[#F8E7CF] px-2.5 py-1 text-xs font-semibold text-[#D96F00]">
+              2
+            </span>
+            <HelpButton onClick={() => setHelpOpen(true)} />
+          </div>
+        </div>
+
+        <div className="flex h-[280px] flex-col gap-3 overflow-y-auto pr-1">
+          {/* Active Alert 1 */}
+          <div className="rounded-xl border border-red-100 bg-red-50/50 p-4">
+            <div className="flex items-start gap-3">
+              <div className="rounded-lg bg-red-100 p-2 text-red-600">
+                <AlertTriangle size={20} />
               </div>
-              <p className="text-xs text-slate-400 line-clamp-2">{alert.description}</p>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-red-600 uppercase tracking-wider">{t("alerts.severity.critical")}</span>
+                  <span className="text-[10px] font-medium text-slate-500">10m ago</span>
+                </div>
+                <h4 className="mt-1 font-bold text-slate-800 text-sm">{t("alerts.data.criticalCrowd")}</h4>
+                <p className="mt-1 text-xs text-slate-600 line-clamp-2">
+                  {t("alerts.data.criticalCrowdDescription")}
+                </p>
+                <div className="mt-3 flex gap-2">
+                  <button onClick={() => navigate("/dashboard/alerts")} className="rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm border border-slate-200 hover:bg-slate-50">{t("alerts.viewDetails")}</button>
+                </div>
+              </div>
             </div>
           </div>
-        ))}
+          {/* Active Alert 2 */}
+          <div className="rounded-xl border border-amber-100 bg-amber-50/50 p-4">
+            <div className="flex items-start gap-3">
+              <div className="rounded-lg bg-amber-100 p-2 text-amber-600">
+                <AlertTriangle size={20} />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-amber-600 uppercase tracking-wider">{t("alerts.severity.medium")}</span>
+                  <span className="text-[10px] font-medium text-slate-500">45m ago</span>
+                </div>
+                <h4 className="mt-1 font-bold text-slate-800 text-sm">{t("alerts.data.resourceShortage")}</h4>
+                <p className="mt-1 text-xs text-slate-600 line-clamp-2">
+                  {t("alerts.data.resourceShortageDescription")}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          onClick={() => navigate("/dashboard/alerts")}
+          className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-[#EDE2D0] py-2.5 text-sm font-semibold text-[#6B421F] transition hover:bg-[#F8F1E5]"
+        >
+          {t("dashboard.viewAllAlerts")}
+          <ArrowRight size={16} />
+        </button>
       </div>
-    </div>
+
+      <HowItWorks
+        feature="alerts"
+        open={helpOpen}
+        onClose={() => setHelpOpen(false)}
+      />
+    </>
   );
 }

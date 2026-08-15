@@ -39,3 +39,4 @@ venv.bak/
 
 # Large data files
 osm_data.json
+data/processed/phase3_dataset.csv

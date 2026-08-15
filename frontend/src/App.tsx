@@ -1,80 +1,99 @@
-import { useTranslation } from 'react-i18next';
-import AppShell from './components/layout/AppShell';
-import KpiCard from './components/dashboard/KpiCard';
-import DigitalTwinMap from './components/digital-twin/DigitalTwinMap';
-import AlertsPanel from './components/dashboard/AlertsPanel';
-import RecommendationPanel from './components/dashboard/RecommendationPanel';
-import SimulationPanel from './components/dashboard/SimulationPanel';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Solution from "./pages/Solution";
+import Dashboard from "./pages/Dashboard";
+import Resources from "./pages/Resources";
+import Alerts from "./pages/Alerts";
+import Simulation from "./pages/Simulation";
+import AIAssistant from "./pages/AIAssistant";
+import Help from "./pages/Help";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+import Sidebar from "./components/layout/Sidebar";
+import Topbar from "./components/layout/Topbar";
+import { useState } from "react";
+import DigitalTwinMap from "./components/digital-twin/DigitalTwinMap";
+
+
+
+// A layout wrapper for dashboard pages to include sidebar and topbar
+function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  
+  return (
+    <div className="flex h-screen overflow-hidden bg-[#F8F1E5]">
+      <Sidebar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
+      
+      <div className="flex flex-1 flex-col overflow-hidden lg:ml-64">
+        <Topbar setMobileOpen={setMobileOpen} />
+        
+        <main className="flex-1 overflow-y-auto overflow-x-hidden p-3 sm:p-5 md:p-8">
+          {children}
+        </main>
+      </div>
+    </div>
+  );
+}
 
 export default function App() {
-  const { t } = useTranslation();
-
   return (
-    <AppShell>
-      <div className="flex flex-col h-full gap-4 min-w-[1024px] max-w-[1920px] mx-auto">
-        
-        {/* KPI Row */}
-        <div className="grid grid-cols-6 gap-4 shrink-0">
-          <KpiCard 
-            title={t('total_pilgrims')} 
-            value="12,840" 
-            subValue={<>▲ 8.5% <span className="text-slate-500">{t('vs_last_hour')}</span></>} 
-            subValueColor="green" 
-          />
-          <KpiCard 
-            title={t('high_risk_zones')} 
-            value="2" 
-            subValue="▲ Critical" 
-            subValueColor="red" 
-          />
-          <KpiCard 
-            title={t('ambulances')} 
-            value="8" 
-            subValue="Available 3" 
-            subValueColor="green" 
-          />
-          <KpiCard 
-            title={t('volunteers')} 
-            value="34" 
-            subValue="Active" 
-            subValueColor="green" 
-          />
-          <KpiCard 
-            title={t('water_tankers')} 
-            value="5" 
-            subValue="Available 2" 
-            subValueColor="green" 
-          />
-          <KpiCard 
-            title={t('avg_temperature')} 
-            value="34.6°C" 
-            subValue="▲ High" 
-            subValueColor="amber" 
-          />
-        </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/solution" element={<Solution />} />
 
-        {/* Main Content Area */}
-        <div className="flex flex-1 gap-4 min-h-0">
-          
-          {/* Left/Center: Digital Twin */}
-          <div className="flex-1 flex flex-col h-full">
-            <DigitalTwinMap />
-          </div>
+        {/* Dashboard Routes wrapped in ProtectedRoute and DashboardLayout */}
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <DashboardLayout><Dashboard /></DashboardLayout>
+          </ProtectedRoute>
+        } />
 
-          {/* Right: Operations Panels */}
-          <div className="w-[320px] xl:w-[380px] flex flex-col gap-4 shrink-0 overflow-y-auto pr-1">
-            <AlertsPanel />
-            <RecommendationPanel />
-          </div>
-          
-        </div>
+        <Route path="/dashboard/alerts" element={
+          <ProtectedRoute>
+            <DashboardLayout><Alerts /></DashboardLayout>
+          </ProtectedRoute>
+        } />
 
-        {/* Bottom: Simulation Panel */}
-        <div className="shrink-0">
-          <SimulationPanel />
-        </div>
+        <Route path="/dashboard/resources" element={
+          <ProtectedRoute>
+            <DashboardLayout><Resources /></DashboardLayout>
+          </ProtectedRoute>
+        } />
 
-      </div>
-    </AppShell>
+        <Route path="/dashboard/digital-twin" element={
+          <ProtectedRoute>
+            <DashboardLayout>
+              {/* REAL Digital Twin Engine integrated into new shell */}
+              <div className="flex-1 flex flex-col h-full min-h-[600px] bg-slate-900 rounded-xl overflow-hidden shadow-md">
+                <DigitalTwinMap />
+              </div>
+            </DashboardLayout>
+          </ProtectedRoute>
+        } />
+
+        <Route path="/dashboard/simulation" element={
+          <ProtectedRoute>
+            <DashboardLayout><Simulation /></DashboardLayout>
+          </ProtectedRoute>
+        } />
+
+        <Route path="/dashboard/assistant" element={
+          <ProtectedRoute>
+            <DashboardLayout><AIAssistant /></DashboardLayout>
+          </ProtectedRoute>
+        } />
+
+        <Route path="/dashboard/help" element={
+          <ProtectedRoute>
+            <DashboardLayout><Help /></DashboardLayout>
+          </ProtectedRoute>
+        } />
+      </Routes>
+    </Router>
   );
 }
